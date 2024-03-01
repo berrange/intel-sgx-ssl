@@ -54,6 +54,17 @@ cd $SGXSSL_ROOT/../openssl_source || exit 1
 rm -rf $OPENSSL_VERSION
 tar xvf $OPENSSL_VERSION.tar.gz > /dev/null || exit 1
 
+# Disable forbidden EC
+(
+	cd $OPENSSL_VERSION
+
+	for i in $SGXSSL_ROOT/../openssl_source/*.patch
+	do
+		echo "Apply $i"
+		patch -p1 < $i
+	done
+)
+
 # Remove AESBS to support only AESNI and VPAES
 sed -i '/BSAES_ASM/d' $OPENSSL_VERSION/Configure
 
