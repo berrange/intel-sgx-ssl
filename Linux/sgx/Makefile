@@ -57,12 +57,6 @@ all: $(PACKAGE_LIB)/$(OPENSSL_LIB)
 ifneq ($(CRYPTO_ONLY), 1)
 	$(MAKE) -C $(TRUSTED_LIB_DIR) all
 	$(MAKE) -C $(UNTRUSTED_LIB_DIR) all
-
-ifeq ($(LINUX_SGX_BUILD), 0)
-ifneq ($(NO_THREADS), 1)
-	$(MAKE) -C $(TEST_DIR) all
-endif
-endif
 endif
 
 ifneq ($(MITIGATION-CVE-2020-0551),)
