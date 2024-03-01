@@ -55,6 +55,14 @@ cd $SGXSSL_ROOT/../openssl_source || exit 1
 rm -rf $OPENSSL_VERSION
 tar xvf $OPENSSL_VERSION.tar.gz || exit 1
 
+# Disable forbidden EC
+(
+  cd $OPENSSL_VERSION
+  patch -p1 < $SGXSSL_ROOT/../openssl_source/0010-Add-changes-to-ectest-and-eccurve.patch
+  patch -p1 < $SGXSSL_ROOT/../openssl_source/0011-Remove-EC-curves.patch
+  patch -p1 < $SGXSSL_ROOT/../openssl_source/0012-Disable-explicit-ec.patch
+)
+
 # Remove AESBS to support only AESNI and VPAES
 sed -i '/BSAES_ASM/d' $OPENSSL_VERSION/Configure
 
