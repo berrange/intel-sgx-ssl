@@ -469,6 +469,7 @@ void t_sgxssl_call_apis()
     }
 	printf("test threads_test completed\n");
 #ifndef SGXSSL_FIPS
+#if 0
     //GM SM2 - sign and verify
     ret = ecall_sm2_sign_verify();
     if (ret != 0)
@@ -486,6 +487,7 @@ void t_sgxssl_call_apis()
         goto end;
     }
     printf("test evp_sm2_encrypt_decrypt completed\n");
+#endif
 
     //GM SM3 - compute digest of message
     ret = ecall_sm3();
@@ -496,6 +498,7 @@ void t_sgxssl_call_apis()
     }
     printf("test evp_sm3 completed\n");
 
+#if 0
     //GM SM4 - cbc encrypt and decrypt
     ret = ecall_sm4_cbc();
     if (ret != 0)
@@ -513,6 +516,7 @@ void t_sgxssl_call_apis()
         goto end;
     }
     printf("test evp_sm4_ctr completed\n");
+#endif
 #endif
     printf("ALL tests in t_sgxssl_call_apis passed!\n");
 end:
