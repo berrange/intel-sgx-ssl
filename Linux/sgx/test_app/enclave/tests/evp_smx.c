@@ -44,6 +44,7 @@
 #define SAFE_FREE(ptr, size)  {if (NULL != (ptr)) {memset_s(ptr, size, 0, size); free(ptr); (ptr)=NULL;}}
 #endif
 
+#if 0
 // Default sm2_user_id and its length defined by openssl
 unsigned char sm2_user_id[] = "1234567812345678";
 unsigned int sm2_user_id_len = sizeof(sm2_user_id)-1;
@@ -512,6 +513,7 @@ end:
 
 	return ret;
 }
+#endif
 
 /* Compute a SM3 digest of a message. */
 int ecall_sm3(void)
@@ -571,6 +573,7 @@ end:
 	return ret;
 }
 
+#if 0
 /* SM4 block cipher mode(cbc) of operation. */
 int ecall_sm4_cbc(void)
 {	
@@ -743,3 +746,4 @@ end:
 
 	return ret;
 }
+#endif
