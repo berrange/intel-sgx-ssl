@@ -174,6 +174,7 @@ fi
 make libcrypto.a || exit 1
 cp libcrypto.a $SGXSSL_ROOT/package/lib64/$OUTPUT_LIB || exit 1
 objcopy --rename-section .init=Q6A8dc14f40efc4288a03b32cba4e $SGXSSL_ROOT/package/lib64/$OUTPUT_LIB || exit 1
+mkdir -p $SGXSSL_ROOT/package/include/openssl/
 cp include/openssl/* $SGXSSL_ROOT/package/include/openssl/ || exit 1
 grep OPENSSL_VERSION_STR include/openssl/opensslv.h > $SGXSSL_ROOT/sgx/osslverstr.h || exit 1
 cp -r include/crypto $SGXSSL_ROOT/sgx/test_app/enclave/ || exit 1
