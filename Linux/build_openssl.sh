@@ -58,6 +58,8 @@ tar xvf $OPENSSL_VERSION.tar.gz > /dev/null || exit 1
 (
 	cd $OPENSSL_VERSION
 
+	set -e
+
 	for i in $SGXSSL_ROOT/../openssl_source/*.patch
 	do
 		echo "Apply $i"
